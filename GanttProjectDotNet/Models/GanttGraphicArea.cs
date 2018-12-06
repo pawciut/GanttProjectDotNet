@@ -8,5 +8,6 @@ namespace GanttProjectDotNet.Models
 {
     public class GanttGraphicArea
     {
+        public string StartDate { get; set; }
     }
 }

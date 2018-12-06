@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\UIFacade.cs" />
     <Compile Include="Models\WeekendCalendar.cs" />
     <Compile Include="Models\GanttGraphicArea.cs" />
     <Compile Include="Models\GanttProject.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="IO\GanttXMLSaver.cs" />
     <Compile Include="IO\SaverBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XElementExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

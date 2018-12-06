@@ -14,11 +14,22 @@ namespace GanttProjectDotNet.IO
     {
         private GanttProject myProject;
         private GanttGraphicArea area;
+        private UIFacade myFacadeUI;
 
-        public GanttXMLSaver(GanttProject project, TaskTreeUIFacade taskTree, GanttResourcePanel peop, GanttGraphicArea area)
+        const string VERSION = "2.8.9";
+        const string LANGUAGE = "en_GB";
+
+
+
+        public GanttXMLSaver(GanttProject project, TaskTreeUIFacade taskTree, GanttResourcePanel peop, GanttGraphicArea area, UIFacade uIFacade)
         {
             this.area = area;
             myProject = project;
+        }
+
+        public class Utf8StringWriter : StringWriter
+        {
+            public override Encoding Encoding { get { return Encoding.UTF8; } }
         }
 
         public void Save(Stream stream)
@@ -26,52 +37,28 @@ namespace GanttProjectDotNet.IO
             try
             {
 
-                var doc = new XDocument("project");
+                var doc = new XDocument();
                 doc.Declaration = new XDeclaration("1.0", "utf-8", null);
+                var root = new XElement("project");
+                doc.Add(root);
 
-                var builder = new StringBuilder();
-                var settings = new XmlWriterSettings()
+                root.AddAttribute("name", myProject.ProjectName);
+                root.AddAttribute("company", myProject.Organization);
+                root.AddAttribute("webLink", myProject.MyWebLink);
+                if (area != null)
+                    root.AddAttribute("view-date", area.StartDate);
+                if (myFacadeUI != null)
                 {
-                    Indent = true,
-                    Encoding = Encoding.UTF8
-                };
-                using (var writer = XmlWriter.Create(builder, settings))
-                {
-                    doc.WriteTo(writer);
+                    root.AddAttribute("view-index", myFacadeUI.ViewIndex);
+                    root.AddAttribute("gantt-divider-location", myFacadeUI.GanttDividerLocation);
+                    root.AddAttribute("resource-divider-location", myFacadeUI.GanttDividerLocation);
                 }
-                Console.WriteLine(builder.ToString());
-                File.AppendAllText(@"D:\Repos\GanttProjectDotNet", builder.ToString(), Encoding.UTF8);
+                root.AddAttribute("version", VERSION);
+                root.AddAttribute("locale", LANGUAGE);
 
-
-                //AttributesImpl attrs = new AttributesImpl();
-                //StreamResult result = new StreamResult(stream);
-                //var handler = createHandler(result);
-                //handler.AddFirst("project");
-                //addAttribute("name", getProject().getProjectName(), attrs);
-                //addAttribute("company", getProject().getOrganization(), attrs);
-                //addAttribute("webLink", getProject().getWebLink(), attrs);
-                //if (area != null)
-                //{
-                //    addAttribute("view-date", CalendarFactory.createGanttCalendar(area.getStartDate()).toXMLString(), attrs);
-                //}
-                //if (myUIFacade != null)
-                //{
-                //    addAttribute("view-index", "" + myUIFacade.getViewIndex(), attrs);
-                //    // TODO for GP 2.0: move view configurations into <view> tag (see
-                //    // ViewSaver)
-                //    addAttribute("gantt-divider-location", "" + myUIFacade.getGanttDividerLocation(), attrs);
-                //    addAttribute("resource-divider-location", "" + myUIFacade.getResourceDividerLocation(), attrs);
-                //}
-                //addAttribute("version", VERSION, attrs);
-                //addAttribute("locale", GanttLanguage.getInstance().getLocale().toString(), attrs);
-                //startElement("project", attrs, handler);
-                ////
                 //// See https://bugs.openjdk.java.net/browse/JDK-8133452
-                //if (getProject().getDescription() != null)
-                //{
-                //    String projectDescription = getProject().getDescription().replace("\\r\\n", "\\n");
-                //    cdataElement("description", projectDescription, attrs, handler);
-                //}
+                if (!String.IsNullOrEmpty(myProject.Description))
+                    root.AddElement("description", myProject.Description, true);
 
                 //saveViews(handler);
                 //emptyComment(handler);
@@ -86,6 +73,20 @@ namespace GanttProjectDotNet.IO
                 //handler.endDocument();
 
                 //stream.close();
+
+
+                var stringWriter = new Utf8StringWriter();
+                var settings = new XmlWriterSettings()
+                {
+                    Indent = true,
+                    Encoding = Encoding.UTF8,
+                };
+                using (var writer = XmlWriter.Create(stringWriter, settings))
+                {
+                    doc.WriteTo(writer);
+                }
+                Console.WriteLine(stringWriter.ToString());
+                File.WriteAllText(@"D:\Repos\GanttProjectDotNet\test.gan", stringWriter.ToString(), Encoding.UTF8);
             }
             catch (Exception e)
             {

@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GanttProjectDotNet", "GanttProjectDotNet.csproj", "{34BC45D6-39D5-441B-BD23-2341DCF6EFEC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GanttProjecttDotNet.Tests", "..\GanttProjecttDotNet.Tests\GanttProjecttDotNet.Tests.csproj", "{1BE3467D-C305-4BB7-81E9-EE51CF60302C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{34BC45D6-39D5-441B-BD23-2341DCF6EFEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34BC45D6-39D5-441B-BD23-2341DCF6EFEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34BC45D6-39D5-441B-BD23-2341DCF6EFEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BE3467D-C305-4BB7-81E9-EE51CF60302C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BE3467D-C305-4BB7-81E9-EE51CF60302C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BE3467D-C305-4BB7-81E9-EE51CF60302C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BE3467D-C305-4BB7-81E9-EE51CF60302C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
