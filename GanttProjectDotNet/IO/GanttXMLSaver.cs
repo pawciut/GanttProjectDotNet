@@ -10,6 +10,9 @@ using GanttProjectDotNet.Models;
 
 namespace GanttProjectDotNet.IO
 {
+    /// <summary>
+    /// ganttproject\src\net\sourceforge\ganttproject\io\GanttXMLSaver.java
+    /// </summary>
     public class GanttXMLSaver : SaverBase
     {
         private GanttProject myProject;
@@ -39,26 +42,26 @@ namespace GanttProjectDotNet.IO
 
                 var doc = new XDocument();
                 doc.Declaration = new XDeclaration("1.0", "utf-8", null);
-                var root = new XElement("project");
+                var root = new XElement(Constants.ProjectElement);
                 doc.Add(root);
 
-                root.AddAttribute("name", myProject.ProjectName);
-                root.AddAttribute("company", myProject.Organization);
-                root.AddAttribute("webLink", myProject.MyWebLink);
+                root.AddAttribute(Constants.NameAttribute, myProject.ProjectName);
+                root.AddAttribute(Constants.OrganizationAttribute, myProject.Organization);
+                root.AddAttribute(Constants.MyWebLinkAttribute, myProject.MyWebLink);
                 if (area != null)
-                    root.AddAttribute("view-date", area.StartDate);
+                    root.AddAttribute(Constants.AreaStartDateAttribute, area.StartDate);
                 if (myFacadeUI != null)
                 {
-                    root.AddAttribute("view-index", myFacadeUI.ViewIndex);
-                    root.AddAttribute("gantt-divider-location", myFacadeUI.GanttDividerLocation);
-                    root.AddAttribute("resource-divider-location", myFacadeUI.GanttDividerLocation);
+                    root.AddAttribute(Constants.MyFacadeUIViewIndexAttribute, myFacadeUI.ViewIndex);
+                    root.AddAttribute(Constants.MyFacadeUIGanttDividerLocationAttribute, myFacadeUI.GanttDividerLocation);
+                    root.AddAttribute(Constants.MyFacadeUIResourceDividerLocationAttribute, myFacadeUI.ResourceDividerLocation);
                 }
-                root.AddAttribute("version", VERSION);
-                root.AddAttribute("locale", LANGUAGE);
+                root.AddAttribute(Constants.VERSIONAttribute, VERSION);
+                root.AddAttribute(Constants.LANGUAGEAttribute, LANGUAGE);
 
                 //// See https://bugs.openjdk.java.net/browse/JDK-8133452
                 if (!String.IsNullOrEmpty(myProject.Description))
-                    root.AddElement("description", myProject.Description, true);
+                    root.AddElement(Constants.DescriptionElement, myProject.Description, true);
 
                 //saveViews(handler);
                 //emptyComment(handler);

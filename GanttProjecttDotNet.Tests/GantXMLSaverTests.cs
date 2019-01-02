@@ -22,15 +22,28 @@ namespace GanttProjecttDotNet.Tests
         public void ShouldSaveProject()
         {
             //Arrange
-            ganttProjectBuilder.Set("testProj", "desc123","MBD VC", "http://mypage.com");
-            ganttGraphicAreaBuilder.Set("2018-06-01");
+            string projectName = "testProj";
+            string description = "desc123";
+            string company = "MBD VC";
+            string website = "http://mypage.com";
+            string startDate = "2018-06-01";
+
+            ganttProjectBuilder.Set(projectName, description , company, website);
+            ganttGraphicAreaBuilder.Set(startDate);
             uiFacadeBuilder.Set(0,656,300);
 
             //Act
             sut = BuildSut();
             sut.Save(null);
 
+            GantXMLOpen open = new GantXMLOpen();
+            open.Load();
+
             //Assert
+            Assert.AreEqual(projectName, open.myProject.ProjectName);
+            Assert.AreEqual(description, open.myProject.Description);
+            Assert.AreEqual(company, open.myProject.Organization);
+            Assert.AreEqual(website, open.myProject.MyWebLink);
 
 
         }

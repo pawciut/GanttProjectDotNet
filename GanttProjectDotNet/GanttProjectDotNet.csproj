@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="IO\GantXMLOpen.cs" />
     <Compile Include="Models\UIFacade.cs" />
     <Compile Include="Models\WeekendCalendar.cs" />
     <Compile Include="Models\GanttGraphicArea.cs" />
