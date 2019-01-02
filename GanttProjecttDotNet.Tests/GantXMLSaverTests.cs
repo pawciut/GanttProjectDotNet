@@ -18,7 +18,7 @@ namespace GanttProjecttDotNet.Tests
             return new GanttXMLSaver(ganttProjectBuilder.Build(), null, null, ganttGraphicAreaBuilder.Build(), uiFacadeBuilder.Build());
         }
 
-        [TestMethod]
+        [TestMethod]    
         public void ShouldSaveProject()
         {
             //Arrange

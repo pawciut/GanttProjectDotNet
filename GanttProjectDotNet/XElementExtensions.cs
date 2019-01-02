@@ -9,16 +9,23 @@ namespace GanttProjectDotNet
 {
     public static class XElementExtensions
     {
-        public static XAttribute AddAttribute(this XElement element, string attribute, object value, bool cdata= false)
+        public static XAttribute AddAttribute(this XElement element, string attribute, object value, bool cdata = false)
         {
-            var attr = new XAttribute("name", cdata? new XCData((string)value) : value);
-            element.Add(attr);
+            XAttribute attr = null;
+            if (element.HasAttributes
+                && (attr = element.Attributes().FirstOrDefault(at => at.Name.LocalName == attribute)) != null)
+                attr.SetValue(cdata ? new XCData((string)value) : value);
+            else
+            {
+                attr = new XAttribute(attribute, cdata ? new XCData((string)value) : value);
+                element.Add(attr);
+            }
             return attr;
         }
 
         public static XElement AddElement(this XElement element, string name, object value, bool cdata = false)
         {
-            var newElement = new XElement("name", cdata ? new XCData((string)value) : value);
+            var newElement = new XElement(name, cdata ? new XCData((string)value) : value);
             element.Add(newElement);
             return newElement;
         }
