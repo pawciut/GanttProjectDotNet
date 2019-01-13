@@ -48,78 +48,12 @@ namespace GanttProjectDotNet.Models.Xml
 
         public void Save(string path)
         {
-            XmlSerializer xsSubmit = new XmlSerializer(typeof(GanttProject));
-            var subReq = this;
-            var xml = String.Empty;
-
-            var stringWriter = new Utf8StringWriter();
-            var settings = new XmlWriterSettings()
-            {
-                Indent = true,
-                Encoding = Encoding.UTF8,
-            };
-
-            using (var sww = XmlTextWriter.Create(stringWriter, settings))
-            {
-                using (XmlWriter writer = XmlWriter.Create(sww))
-                {
-                    xsSubmit.Serialize(writer, subReq);
-                    xml = sww.ToString(); // Your XML
-                }
-            }
-
-            Console.WriteLine(xml);
-            File.WriteAllText(@"D:\Repos\GanttProjectDotNet\test.gan", xml, Encoding.UTF8);
-        }
-
-        public void T1(string path)
-        {
-            XmlSerializer xsSubmit = new XmlSerializer(typeof(GanttProject));
-            var subReq = this;
-            var xml = "";
-
-            using (var sww = new StringWriter())
-            {
-                using (XmlTextWriter writer = new XmlTextWriter(sww) { Formatting = Formatting.Indented })
-                {
-                    xsSubmit.Serialize(writer, subReq);
-                    xml = sww.ToString(); // Your XML
-                }
-            }
-            Console.WriteLine(xml);
-
-            //XmlTextWriter writer = new XmlTextWriter(sww) { Formatting = Formatting.Indented }; instead of XmlWriter writer = XmlWriter.Create(sww);
-        }
-        public void T3(string path)
-        {
-            XmlSerializer xsSubmit = new XmlSerializer(typeof(GanttProject));
-            var subReq = this;
-            var xml = "";
-
-            var stringWriter = new Utf8StringWriter();
-            var settings = new XmlWriterSettings()
-            {
-                Indent = true,
-                Encoding = Encoding.UTF8,
-            };
-            using (var writer = XmlWriter.Create(stringWriter, settings))
-            {
-                xsSubmit.Serialize(writer, subReq);
-                xml = writer.ToString(); // Your XML
-            }
-
-            Console.WriteLine(xml);
-
-            //XmlTextWriter writer = new XmlTextWriter(sww) { Formatting = Formatting.Indented }; instead of XmlWriter writer = XmlWriter.Create(sww);
-        }
-        public void T(string path)
-        {
             XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
 
             //Add an empty namespace and empty value
             ns.Add("", "");
 
-            XmlSerializer xsSubmit = new XmlSerializer(typeof(GanttProject));
+            XmlSerializer serializer = new XmlSerializer(typeof(GanttProject));
             var subReq = this;
             var xml = "";
 
@@ -134,8 +68,8 @@ namespace GanttProjectDotNet.Models.Xml
             {
                 using (var xw = XmlWriter.Create(ms, settings)) // Remember to stop using XmlTextWriter  
                 {
-                    xsSubmit = new XmlSerializer(typeof(GanttProject));
-                    xsSubmit.Serialize(xw, this, ns);
+                    serializer = new XmlSerializer(typeof(GanttProject));
+                    serializer.Serialize(xw, this, ns);
                     xw.Flush();
                 }
                 ms.Seek(0, SeekOrigin.Begin);
@@ -146,8 +80,8 @@ namespace GanttProjectDotNet.Models.Xml
             }
 
             Console.WriteLine(xml);
-
-            //XmlTextWriter writer = new XmlTextWriter(sww) { Formatting = Formatting.Indented }; instead of XmlWriter writer = XmlWriter.Create(sww);
+            File.WriteAllText(@"D:\Repos\GanttProjectDotNet\test.gan", xml, Encoding.UTF8);
         }
+        
     }
 }

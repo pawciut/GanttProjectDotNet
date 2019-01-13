@@ -37,7 +37,7 @@ namespace GanttProjecttDotNet.Tests
 
             //Act
             sut = BuildSut();
-            sut.T(null);
+            sut.Save(null);
 
             GantXMLOpen open = new GantXMLOpen();
             open.Load();

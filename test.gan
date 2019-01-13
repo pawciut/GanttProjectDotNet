@@ -1,1 +1,4 @@
-﻿System.Xml.XmlWellFormedWriter
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project name="testProj" company="MBD VC" webLink="http://mypage.com" view-date="2018-06-01" view-index="0" gantt-divider-location="656" resource-divider-location="300" version="2.8.9" locale="en_GB">
+  <description><![CDATA[desc123]]></description>
+</project>
