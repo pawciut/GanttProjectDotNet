@@ -40,6 +40,9 @@ namespace GanttProjectDotNet.Models.Xml
         [XmlElement(ElementName = "description")]
         public CData Description { get; set; }
 
+        [XmlElement(ElementName = "calendars")]
+        public Calendars Calendars { get; set; }
+
 
 
 
@@ -82,6 +85,6 @@ namespace GanttProjectDotNet.Models.Xml
             Console.WriteLine(xml);
             File.WriteAllText(@"D:\Repos\GanttProjectDotNet\test.gan", xml, Encoding.UTF8);
         }
-        
+
     }
 }

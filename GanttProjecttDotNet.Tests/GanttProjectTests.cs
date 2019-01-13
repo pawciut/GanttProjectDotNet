@@ -34,6 +34,9 @@ namespace GanttProjecttDotNet.Tests
             string startDate = "2018-06-01";
 
             builder.SetHeader(projectName, description, company, website, startDate, 0, 656, 300,"2.8.9", "en_GB");
+            builder.AddDayType(0);
+            builder.AddDayType(1);
+            builder.AddDefaultWeek();
 
             //Act
             sut = BuildSut();
