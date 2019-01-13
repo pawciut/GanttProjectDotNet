@@ -58,6 +58,8 @@
     <Compile Include="IO\GanttXMLSaver.cs" />
     <Compile Include="IO\SaverBase.cs" />
     <Compile Include="Models\Xml\OnlyShowWeekends.cs" />
+    <Compile Include="Models\Xml\TaskProperty.cs" />
+    <Compile Include="Models\Xml\Tasks.cs" />
     <Compile Include="Models\Xml\TasksNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XElementExtensions.cs" />
