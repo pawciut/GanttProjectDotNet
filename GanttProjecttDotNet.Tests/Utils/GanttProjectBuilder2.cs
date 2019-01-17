@@ -64,6 +64,37 @@ namespace GanttProjecttDotNet.Tests.Utils
 
         }
 
+        public GanttProjectBuilder2 AddDefaultTaskProperties()
+        {
+            if (instance.Tasks == null)
+            {
+                instance.Tasks = new Tasks();
+                instance.Tasks.EmptyMilestones = true;
+            }
+
+            List<TaskProperty> propeties = null;
+            if (instance.Tasks.Properties == null)
+                propeties = new List<TaskProperty>();
+            else
+                propeties = new List<TaskProperty>(instance.Tasks.Properties);
+
+            propeties.Add(new TaskProperty("tpd0", "type", "default", EValueType.Icon));
+            propeties.Add(new TaskProperty("tpd1", "priority", "default", EValueType.Icon));
+            propeties.Add(new TaskProperty("tpd2", "info", "default", EValueType.Icon));
+            propeties.Add(new TaskProperty("tpd3", "name", "default", EValueType.Text));
+            propeties.Add(new TaskProperty("tpd4", "begindate", "default", EValueType.Date));
+            propeties.Add(new TaskProperty("tpd5", "enddate", "default", EValueType.Date));
+            propeties.Add(new TaskProperty("tpd6", "duration", "default", EValueType.Int));
+            propeties.Add(new TaskProperty("tpd7", "completion", "default", EValueType.Int));
+            propeties.Add(new TaskProperty("tpd8", "coordinator", "default", EValueType.Text));
+            propeties.Add(new TaskProperty("tpd9", "predecessorsr", "default", EValueType.Text));
+            propeties.Add(new TaskProperty("tpc0", "MyId", "custom", EValueType.Text));
+
+            instance.Tasks.Properties = propeties.ToArray();
+            return this;
+
+        }
+
 
     }
 }

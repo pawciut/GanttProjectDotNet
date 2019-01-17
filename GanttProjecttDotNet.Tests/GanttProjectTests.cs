@@ -37,6 +37,7 @@ namespace GanttProjecttDotNet.Tests
             builder.AddDayType(0);
             builder.AddDayType(1);
             builder.AddDefaultWeek();
+            builder.AddDefaultTaskProperties();
 
             //Act
             sut = BuildSut();

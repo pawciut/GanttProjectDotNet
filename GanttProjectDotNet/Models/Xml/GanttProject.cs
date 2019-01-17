@@ -43,6 +43,9 @@ namespace GanttProjectDotNet.Models.Xml
         [XmlElement(ElementName = "calendars")]
         public Calendars Calendars { get; set; }
 
+        [XmlElement(ElementName = "tasks")]
+        public Tasks Tasks { get; set; }
+
 
 
 

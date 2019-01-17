@@ -48,6 +48,8 @@
     <Compile Include="Models\Xml\DayType.cs" />
     <Compile Include="Models\Xml\DayTypes.cs" />
     <Compile Include="Models\Xml\DefaultWeek.cs" />
+    <Compile Include="Models\Xml\EnumUtils.cs" />
+    <Compile Include="Models\Xml\EValueType.cs" />
     <Compile Include="Models\Xml\GanttProject.cs" />
     <Compile Include="Models\UIFacade.cs" />
     <Compile Include="Models\WeekendCalendar.cs" />

@@ -9,7 +9,32 @@ namespace GanttProjectDotNet.Models.Xml
 {
     public class TaskProperty
     {
-        [XmlAttribute]
-        public string MyProperty { get; set; }
+        public TaskProperty()
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <param name="valuetype">icon,text,date,int</param>
+        public TaskProperty( string id, string name, string type, EValueType valuetype)
+        {
+            Id = id;
+            Name = name;
+            Type = type;
+            ValueType = valuetype.ToXmlString();
+        }
+
+        [XmlAttribute(AttributeName ="id")]
+        public string Id { get; set; }
+        [XmlAttribute(AttributeName = "name")]
+        public string Name { get; set; }
+        [XmlAttribute(AttributeName = "type")]
+        public string Type { get; set; }
+        [XmlAttribute(AttributeName = "valuetype")]
+        public string ValueType { get; set; }
     }
 }

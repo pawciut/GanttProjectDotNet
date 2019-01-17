@@ -13,6 +13,7 @@ namespace GanttProjectDotNet.Models.Xml
         public bool EmptyMilestones { get; set; }
 
         [XmlArray(ElementName ="taskproperties")]
+        [XmlArrayItem(ElementName ="taskproperty")]
         public TaskProperty[] Properties { get; set; }
     }
 }
