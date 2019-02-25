@@ -84,7 +84,13 @@ namespace GanttProjectDotNet.Models.Xml
 
         [XmlElement(ElementName = "task")]
         public TasksNode[] Subtasks { get; set; }
+        
+        [XmlElement(ElementName = "notes")]
+        public CData Notes { get; set; }
 
+
+        [XmlElement(ElementName = "depend")]
+        public TaskDependency[] Dependencies { get; set; }
 
         public void AddTask(TasksNode node)
         {
@@ -96,6 +102,19 @@ namespace GanttProjectDotNet.Models.Xml
                 items = new List<TasksNode>(Subtasks);
             items.Add(node);
             Subtasks = items.ToArray();
+        }
+
+        public void AddSuccessor(string successorId, ETaskDependencyType type, int delay, ETaskDependencyHardness hardness)
+        {
+            //bez sprawdzania czy taki task juz istnieje
+            List<TaskDependency> items = null;
+            if (Dependencies == null)
+                items = new List<TaskDependency>();
+            else
+                items = new List<TaskDependency>(Dependencies);
+            items.Add(new TaskDependency(successorId,type,delay, hardness));
+            Dependencies = items.ToArray();
+
         }
     }
 }

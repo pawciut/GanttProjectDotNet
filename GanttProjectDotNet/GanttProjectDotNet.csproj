@@ -49,6 +49,8 @@
     <Compile Include="Models\Xml\DayTypes.cs" />
     <Compile Include="Models\Xml\DefaultWeek.cs" />
     <Compile Include="Models\Xml\EnumUtils.cs" />
+    <Compile Include="Models\Xml\ETaskDependencyHardness.cs" />
+    <Compile Include="Models\Xml\ETaskDependencyType.cs" />
     <Compile Include="Models\Xml\EValueType.cs" />
     <Compile Include="Models\Xml\GanttProject.cs" />
     <Compile Include="Models\UIFacade.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="Models\Xml\OnlyShowWeekends.cs" />
     <Compile Include="Models\Xml\TaskProperty.cs" />
     <Compile Include="Models\Xml\Tasks.cs" />
+    <Compile Include="Models\Xml\TaskDependency.cs" />
     <Compile Include="Models\Xml\TasksNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GanttProjectExtensions.cs" />

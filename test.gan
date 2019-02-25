@@ -26,7 +26,9 @@
     <task id="1" name="test task1" meeting="false" start="2019-02-26" thirdDate-constraint="0" thirdDate="2019-02-25" duration="2" complete="0" expand="false" color="#ffcc33" webLink="" />
     <task id="2" name="test task2" meeting="false" start="2019-02-27" thirdDate-constraint="0" thirdDate="2019-02-25" duration="3" complete="0" expand="true" color="#ffcc33" webLink="">
       <task id="11" name="test Subtask11" meeting="false" start="2019-02-27" thirdDate-constraint="1" thirdDate="2019-03-17" duration="3" complete="0" expand="false" color="#8cb6ce" webLink="http://www.touchegolfschool.com/images/1.jpg" />
-      <task id="12" name="test Subtask12" meeting="false" start="2019-02-27" thirdDate-constraint="1" thirdDate="2019-03-17" duration="3" complete="0" expand="false" color="#8cb6ce" webLink="http://www.touchegolfschool.com/images/2.jpg" />
+      <task id="12" name="test Subtask12" meeting="false" start="2019-02-27" thirdDate-constraint="1" thirdDate="2019-03-17" duration="3" complete="0" expand="false" color="#8cb6ce" webLink="http://www.touchegolfschool.com/images/2.jpg">
+        <depend id="13" type="3" difference="0" hardness="Strong" />
+      </task>
       <task id="13" name="test Subtask13" meeting="false" start="2019-02-27" thirdDate-constraint="1" thirdDate="2019-03-17" duration="3" complete="0" expand="false" color="#8cb6ce" webLink="http://www.touchegolfschool.com/images/3.jpg" />
     </task>
     <task id="3" name="test task3" meeting="false" start="2019-02-28" thirdDate-constraint="0" thirdDate="2019-02-25" duration="1" complete="0" expand="false" color="#ffcc33" webLink="" />

@@ -107,6 +107,8 @@ namespace GanttProjecttDotNet.Tests.Utils
                     {
                         task.AddTask(new TasksNode(j.ToString(), $"test Subtask{j}", false, DateTime.Now.AddDays(i), true, DateTime.Now.AddDays(20), 1 + i % 3, false, false, "#8cb6ce", "http://www.touchegolfschool.com/images/"+(j-10)+".jpg"));
                     }
+                    var st3 = task.Subtasks[2];
+                    task.Subtasks[1].AddSuccessor(st3.Id, ETaskDependencyType.Finish_Finish,0, ETaskDependencyHardness.Strong);
                 }
                 instance.Tasks.AddTask(task);
             }
