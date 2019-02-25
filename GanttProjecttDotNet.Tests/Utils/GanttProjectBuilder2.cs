@@ -95,6 +95,22 @@ namespace GanttProjecttDotNet.Tests.Utils
 
         }
 
-
+        public GanttProjectBuilder2 AddTestTasks()
+        {
+            for (int i = 1; i <= 10; ++i)
+            {
+                var task = new TasksNode(i.ToString(),$"test task{i}",false, DateTime.Now.AddDays(i),false, DateTime.Now, 1+i%3,false,false, "#ffcc33",String.Empty);
+                if (i == 2)
+                {
+                    task.Expand = true;
+                    for (int j = 11; j <= 13; ++j)
+                    {
+                        task.AddTask(new TasksNode(j.ToString(), $"test Subtask{j}", false, DateTime.Now.AddDays(i), true, DateTime.Now.AddDays(20), 1 + i % 3, false, false, "#8cb6ce", "http://www.touchegolfschool.com/images/"+(j-10)+".jpg"));
+                    }
+                }
+                instance.Tasks.AddTask(task);
+            }
+            return this;
+        }
     }
 }

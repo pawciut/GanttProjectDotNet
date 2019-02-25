@@ -64,6 +64,7 @@
     <Compile Include="Models\Xml\Tasks.cs" />
     <Compile Include="Models\Xml\TasksNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GanttProjectExtensions.cs" />
     <Compile Include="XElementExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -31,13 +31,14 @@ namespace GanttProjecttDotNet.Tests
             string description = "desc123";
             string company = "MBD VC";
             string website = "http://mypage.com";
-            string startDate = "2018-06-01";
+            string startDate = "2019-03-01";
 
             builder.SetHeader(projectName, description, company, website, startDate, 0, 656, 300,"2.8.9", "en_GB");
             builder.AddDayType(0);
             builder.AddDayType(1);
             builder.AddDefaultWeek();
             builder.AddDefaultTaskProperties();
+            builder.AddTestTasks();
 
             //Act
             sut = BuildSut();
